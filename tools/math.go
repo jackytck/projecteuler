@@ -99,6 +99,23 @@ func IsPrime(n int) bool {
 	return true
 }
 
+// SievePrime gives all the primes below n via the method of Eratosthenes.
+func SievePrime(n int) []int {
+	var primes []int
+	comp := make([]bool, n+2)
+	for i := 2; i <= int(math.Sqrt(float64(n))); i++ {
+		for j := i * i; j < n; j += i {
+			comp[j] = true
+		}
+	}
+	for i, v := range comp {
+		if i > 1 && !v && i < n {
+			primes = append(primes, i)
+		}
+	}
+	return primes
+}
+
 // Exp computes x to the power of y.
 func Exp(x, y int) *big.Int {
 	a := big.NewInt(1)
@@ -184,4 +201,23 @@ func SimplifyFraction(a, b int) (int, int) {
 		}
 	}
 	return sa, sb
+}
+
+// Digits returns the individual digits as a slice of int.
+func Digits(n int) []int {
+	var d []int
+	for n > 0 {
+		d = append([]int{n % 10}, d...)
+		n /= 10
+	}
+	return d
+}
+
+// Factorial returns the fractorial of a number.
+func Factorial(n int) *big.Int {
+	a := big.NewInt(1)
+	for i := 2; i <= n; i++ {
+		a.Mul(a, big.NewInt(int64(i)))
+	}
+	return a
 }

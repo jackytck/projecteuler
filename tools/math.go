@@ -221,3 +221,8 @@ func Factorial(n int) *big.Int {
 	}
 	return a
 }
+
+// IsPalindromeInt tells if a number is a palindrome.
+func IsPalindromeInt(n int) bool {
+	return IsPalindromeString(strconv.Itoa(n))
+}

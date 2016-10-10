@@ -3,6 +3,7 @@ package tools
 import (
 	"math"
 	"math/big"
+	"sort"
 	"strconv"
 )
 
@@ -225,4 +226,12 @@ func Factorial(n int) *big.Int {
 // IsPalindromeInt tells if a number is a palindrome.
 func IsPalindromeInt(n int) bool {
 	return IsPalindromeString(strconv.Itoa(n))
+}
+
+// IsPandigital determines if a number is 1 to 9 pandigital.
+func IsPandigital(n int) bool {
+	d := Digits(n)
+	sort.Ints(d)
+	a := JoinInts(d)
+	return a == 123456789
 }

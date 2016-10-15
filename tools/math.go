@@ -214,6 +214,15 @@ func Digits(n int) []int {
 	return d
 }
 
+// DigitsIth returns the i-th digit of a number n.
+func DigitsIth(n, i int) int {
+	d := Digits(n)
+	if i < 0 || i >= len(d) {
+		return -1
+	}
+	return Digits(n)[i]
+}
+
 // Factorial returns the fractorial of a number.
 func Factorial(n int) *big.Int {
 	a := big.NewInt(1)

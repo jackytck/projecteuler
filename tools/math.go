@@ -237,10 +237,16 @@ func IsPalindromeInt(n int) bool {
 	return IsPalindromeString(strconv.Itoa(n))
 }
 
-// IsPandigital determines if a number is 1 to 9 pandigital.
+// IsPandigital determines if a number is pandigital.
 func IsPandigital(n int) bool {
 	d := Digits(n)
 	sort.Ints(d)
-	a := JoinInts(d)
-	return a == 123456789
+	ans := true
+	for i, v := range d {
+		if i+1 != v {
+			ans = false
+			break
+		}
+	}
+	return ans
 }

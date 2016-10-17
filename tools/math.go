@@ -250,3 +250,10 @@ func IsPandigital(n int) bool {
 	}
 	return ans
 }
+
+// IsTriangleNumber determines if a number is a triangle number.
+func IsTriangleNumber(n int) bool {
+	a := 2 * n
+	b := SqrtInt(a)
+	return b*(b+1) == a
+}

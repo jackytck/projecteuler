@@ -251,6 +251,11 @@ func IsPandigital(n int) bool {
 	return ans
 }
 
+// TriangleNumber returns the n-th triangle number.
+func TriangleNumber(n int) int {
+	return n * (n + 1) / 2
+}
+
 // IsTriangleNumber determines if a number is a triangle number.
 func IsTriangleNumber(n int) bool {
 	a := 2 * n
@@ -266,5 +271,16 @@ func PentagonNumber(n int) int {
 // IsPentagonNumber determines if a number is a pentagonal number.
 func IsPentagonNumber(n int) bool {
 	t := (math.Sqrt(24*float64(n)+1) + 1) / 6
+	return t == math.Floor(t)
+}
+
+// HexagonNumber returns the n-th hexagonal number.
+func HexagonNumber(n int) int {
+	return n * (2*n - 1)
+}
+
+// IsHexagonNumber determines if a number is a hexagonal number.
+func IsHexagonNumber(n int) bool {
+	t := (math.Sqrt(8*float64(n)+1) + 1) / 4
 	return t == math.Floor(t)
 }

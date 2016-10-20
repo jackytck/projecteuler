@@ -257,3 +257,14 @@ func IsTriangleNumber(n int) bool {
 	b := SqrtInt(a)
 	return b*(b+1) == a
 }
+
+// PentagonNumber returns the n-th pentagonal number.
+func PentagonNumber(n int) int {
+	return n * (3*n - 1) / 2
+}
+
+// IsPentagonNumber determines if a number is a pentagonal number.
+func IsPentagonNumber(n int) bool {
+	t := (math.Sqrt(24*float64(n)+1) + 1) / 6
+	return t == math.Floor(t)
+}

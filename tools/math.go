@@ -284,3 +284,23 @@ func IsHexagonNumber(n int) bool {
 	t := (math.Sqrt(8*float64(n)+1) + 1) / 4
 	return t == math.Floor(t)
 }
+
+// IsPermute determines if all the given ints are permutation of each other.
+func IsPermute(args ...int) bool {
+	permute := true
+	var compare int
+	for i, v := range args {
+		d := Digits(v)
+		sort.Ints(d)
+		j := JoinInts(d)
+		if i == 0 {
+			compare = j
+		} else {
+			if j != compare {
+				permute = false
+				break
+			}
+		}
+	}
+	return permute
+}

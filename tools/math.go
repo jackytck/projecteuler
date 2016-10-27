@@ -251,6 +251,15 @@ func IsPandigital(n int) bool {
 	return ans
 }
 
+// IsPermuted determines if digits in the two given ints are permuted.
+func IsPermuted(a, b int) bool {
+	da := Digits(a)
+	db := Digits(b)
+	sort.Ints(da)
+	sort.Ints(db)
+	return JoinInts(da) == JoinInts(db)
+}
+
 // TriangleNumber returns the n-th triangle number.
 func TriangleNumber(n int) int {
 	return n * (n + 1) / 2

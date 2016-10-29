@@ -313,3 +313,9 @@ func IsPermute(args ...int) bool {
 	}
 	return permute
 }
+
+// NCR computes the number nCr.
+func NCR(n, r int) *big.Int {
+	z := big.NewInt(0)
+	return z.Binomial(int64(n), int64(r))
+}

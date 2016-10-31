@@ -151,6 +151,20 @@ func JoinInts(slice []int) int {
 	return sum
 }
 
+// JoinIntsBig joins slice of ints into a big.Int.
+func JoinIntsBig(slice []int) *big.Int {
+	sum := big.NewInt(0)
+	ten := big.NewInt(10)
+	p := Exp(10, len(slice)-1)
+	for _, v := range slice {
+		z := big.NewInt(1)
+		z.Mul(p, big.NewInt(int64(v)))
+		sum.Add(sum, z)
+		p.Div(p, ten)
+	}
+	return sum
+}
+
 // ProdInts computes the product of the slice of ints.
 func ProdInts(slice []int) int {
 	p := 1
@@ -214,6 +228,21 @@ func Digits(n int) []int {
 	return d
 }
 
+// DigitsBig returns the individual digits of a big.Int as a slice of int.
+func DigitsBig(n *big.Int) []int {
+	var d []int
+	x := big.NewInt(0)
+	x.Set(n)
+	zero := big.NewInt(0)
+	ten := big.NewInt(10)
+	for x.Cmp(zero) > 0 {
+		m := big.NewInt(1)
+		x.DivMod(x, ten, m)
+		d = append([]int{int(m.Int64())}, d...)
+	}
+	return d
+}
+
 // DigitsIth returns the i-th digit of a number n.
 func DigitsIth(n, i int) int {
 	d := Digits(n)
@@ -221,6 +250,26 @@ func DigitsIth(n, i int) int {
 		return -1
 	}
 	return Digits(n)[i]
+}
+
+// ReverseSliceInts reverses a slice of ints, and return the new slice.
+func ReverseSliceInts(a []int) []int {
+	s := len(a)
+	r := make([]int, s)
+	for i, v := range a {
+		r[s-1-i] = v
+	}
+	return r
+}
+
+// ReverseInt reverses a given int.
+func ReverseInt(n int) int {
+	return JoinInts(ReverseSliceInts(Digits(n)))
+}
+
+// ReverseIntBig reverses a given big.Int.
+func ReverseIntBig(n *big.Int) *big.Int {
+	return JoinIntsBig(ReverseSliceInts(DigitsBig(n)))
 }
 
 // Factorial returns the fractorial of a number.
@@ -235,6 +284,11 @@ func Factorial(n int) *big.Int {
 // IsPalindromeInt tells if a number is a palindrome.
 func IsPalindromeInt(n int) bool {
 	return IsPalindromeString(strconv.Itoa(n))
+}
+
+// IsPalindromeIntBig tells if a big.Int number is a palindrome.
+func IsPalindromeIntBig(n *big.Int) bool {
+	return IsPalindromeString(n.String())
 }
 
 // IsPandigital determines if a number is pandigital.

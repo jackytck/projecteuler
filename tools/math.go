@@ -316,18 +316,30 @@ func IsPermuted(a, b int) bool {
 }
 
 // TriangleNumber returns the n-th triangle number.
+// e.g. 1, 3, 6, 10, 15, ...
 func TriangleNumber(n int) int {
 	return n * (n + 1) / 2
 }
 
 // IsTriangleNumber determines if a number is a triangle number.
 func IsTriangleNumber(n int) bool {
-	a := 2 * n
-	b := SqrtInt(a)
-	return b*(b+1) == a
+	return IsSquareNumber(8*n + 1)
+}
+
+// SquareNumber returns the n-th square number.
+// e.g. 1, 4, 9, 16, 25, ...
+func SquareNumber(n int) int {
+	return n * n
+}
+
+// IsSquareNumber determines if a number is a square number.
+func IsSquareNumber(n int) bool {
+	t := math.Sqrt(float64(n))
+	return t == math.Floor(t)
 }
 
 // PentagonNumber returns the n-th pentagonal number.
+// e.g. 1, 5, 12, 22, 35, ...
 func PentagonNumber(n int) int {
 	return n * (3*n - 1) / 2
 }
@@ -339,6 +351,7 @@ func IsPentagonNumber(n int) bool {
 }
 
 // HexagonNumber returns the n-th hexagonal number.
+// e.g. 1, 6, 15, 28, 45, ...
 func HexagonNumber(n int) int {
 	return n * (2*n - 1)
 }
@@ -346,6 +359,30 @@ func HexagonNumber(n int) int {
 // IsHexagonNumber determines if a number is a hexagonal number.
 func IsHexagonNumber(n int) bool {
 	t := (math.Sqrt(8*float64(n)+1) + 1) / 4
+	return t == math.Floor(t)
+}
+
+// HeptagonalNumber returns the n-th heptagonal number.
+// e.g. 1, 7, 18, 34, 55, ...
+func HeptagonalNumber(n int) int {
+	return n * (5*n - 3) / 2
+}
+
+// IsHeptagonalNumber determines if a number is a heptagonal number.
+func IsHeptagonalNumber(n int) bool {
+	t := (math.Sqrt(40*float64(n)+9) + 3) / 10
+	return t == math.Floor(t)
+}
+
+// OctagonalNumber returns the n-th octagonal number.
+// e.g. 1, 8, 21, 40, 65, ...
+func OctagonalNumber(n int) int {
+	return n * (3*n - 2)
+}
+
+// IsOctagonalNumber determines if a number is a octagonal number.
+func IsOctagonalNumber(n int) bool {
+	t := (math.Sqrt(3*float64(n)+1) + 1) / 3
 	return t == math.Floor(t)
 }
 

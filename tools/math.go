@@ -138,6 +138,16 @@ func DigitSum(n, p int) *big.Int {
 	return s
 }
 
+// DigitSumBig sums the digits of a big number.
+func DigitSumBig(n *big.Int) *big.Int {
+	s := big.NewInt(0)
+	for _, d := range DigitsBig(n) {
+		z := big.NewInt(int64(d))
+		s.Add(s, z)
+	}
+	return s
+}
+
 // JoinInts joins slice of ints and return it as an int.
 func JoinInts(slice []int) int {
 	var sum int

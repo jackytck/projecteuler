@@ -478,3 +478,25 @@ func Comb(collection interface{}, k int) <-chan []interface{} {
 	}()
 	return c
 }
+
+// SqrtExapnd gives the expansion of continued fraction of square root of n.
+// https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion
+func SqrtExapnd(n int) []int {
+	srt := math.Sqrt(float64(n))
+	if IsSquareNumber(n) {
+		return []int{int(srt)}
+	}
+	var terms []int
+	var m int
+	d := 1
+	a := int(math.Floor(srt))
+	a0 := a
+	terms = append(terms, a)
+	for a != 2*a0 {
+		m = d*a - m
+		d = (n - m*m) / d
+		a = int(math.Floor(float64((a0 + m)) / float64(d)))
+		terms = append(terms, a)
+	}
+	return terms
+}

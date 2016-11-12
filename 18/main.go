@@ -6,6 +6,8 @@ import (
 	"log"
 	"strconv"
 	"strings"
+
+	"github.com/jackytck/projecteuler/tools"
 )
 
 func read(path string) [][]int {
@@ -33,42 +35,18 @@ func read(path string) [][]int {
 	return grid
 }
 
-func min(a ...int) int {
-	var ret int
-	for i, v := range a {
-		if i == 0 {
-			ret = v
-		}
-		if v < ret {
-			ret = v
-		}
-	}
-	return ret
-}
-
-func max(a ...int) int {
-	var ret int
-	for i, v := range a {
-		if i == 0 {
-			ret = v
-		}
-		if v > ret {
-			ret = v
-		}
-	}
-	return ret
-}
-
 func dp(triangle [][]int) int {
 	for i, u := range triangle {
 		if i == 0 {
 			continue
 		}
 		for j, v := range u {
-			triangle[i][j] = max(triangle[i-1][max(0, j-1)], triangle[i-1][min(i-1, j)]) + v
+			left := triangle[i-1][tools.MaxInt(0, j-1)]
+			right := triangle[i-1][tools.MinInt(i-1, j)]
+			triangle[i][j] = tools.MaxInt(left, right) + v
 		}
 	}
-	return max(triangle[len(triangle)-1]...)
+	return tools.MaxInt(triangle[len(triangle)-1]...)
 }
 
 func main() {
@@ -78,5 +56,7 @@ func main() {
 	fmt.Println(dp(large))
 }
 
-// Maximum path sum going from top to bottom of a triangle.
-// Note: classic DP
+// Find the maximum total from top to bottom.
+// Note:
+// Classic DP.
+// Same solution as problem 67.

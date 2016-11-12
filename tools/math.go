@@ -185,20 +185,32 @@ func ProdInts(slice []int) int {
 	return p
 }
 
-// MinInt returns the smaller number of a and b.
-func MinInt(a, b int) int {
-	if a < b {
-		return a
+// MinInt returns the smallest number.
+func MinInt(a ...int) int {
+	var ret int
+	for i, v := range a {
+		if i == 0 {
+			ret = v
+		}
+		if v < ret {
+			ret = v
+		}
 	}
-	return b
+	return ret
 }
 
-// MaxInt returns the larger number of a and b.
-func MaxInt(a, b int) int {
-	if a > b {
-		return a
+// MaxInt returns the largest number.
+func MaxInt(a ...int) int {
+	var ret int
+	for i, v := range a {
+		if i == 0 {
+			ret = v
+		}
+		if v > ret {
+			ret = v
+		}
 	}
-	return b
+	return ret
 }
 
 // SimplifyFraction simplifies a/b and return the (numerator, denominator).

@@ -1,5 +1,7 @@
 package tools
 
+import "strconv"
+
 // ReverseString reverses a string
 func ReverseString(s string) string {
 	var r string
@@ -36,4 +38,13 @@ func WordValue(s string) int {
 		v += int(c-'A') + 1
 	}
 	return v
+}
+
+// JoinIntsString joins all the ints (of any digit) and return the string.
+func JoinIntsString(a ...int) string {
+	var s string
+	for _, v := range a {
+		s += strconv.Itoa(v)
+	}
+	return s
 }

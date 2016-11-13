@@ -148,7 +148,7 @@ func DigitSumBig(n *big.Int) *big.Int {
 	return s
 }
 
-// JoinInts joins slice of ints and return it as an int.
+// JoinInts joins slice of single digit ints and return it as an int.
 func JoinInts(slice []int) int {
 	var sum int
 	len := len(slice) - 1
@@ -162,7 +162,7 @@ func JoinInts(slice []int) int {
 	return sum
 }
 
-// JoinIntsBig joins slice of ints into a big.Int.
+// JoinIntsBig joins slice of single digit ints into a big.Int.
 func JoinIntsBig(slice []int) *big.Int {
 	sum := big.NewInt(0)
 	ten := big.NewInt(10)

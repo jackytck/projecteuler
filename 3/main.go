@@ -19,7 +19,6 @@ func main() {
 }
 
 // Find the largest prime factor of a number.
-
 // Note:
 // Every natural number has a unique prime factorization.
 // Starting from low to high, divide the number repeatedly and consume all the factors.

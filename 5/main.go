@@ -3,26 +3,15 @@ package main
 import (
 	"fmt"
 	"math"
-)
 
-func primeFactors(n int) map[int]int {
-	factors := make(map[int]int)
-	d := 2
-	for n > 1 {
-		for n%d == 0 {
-			n /= d
-			factors[d]++
-		}
-		d++
-	}
-	return factors
-}
+	"github.com/jackytck/projecteuler/tools"
+)
 
 // Smallest positive number that is divisible by all of the numbers from 1 to n.
 func lcm(n int) int {
 	lcm := make(map[int]int)
 	for i := 2; i <= n; i++ {
-		for k, v := range primeFactors(i) {
+		for k, v := range tools.PrimeFactors(i) {
 			if v > lcm[k] {
 				lcm[k] = v
 			}
@@ -39,3 +28,6 @@ func main() {
 	fmt.Println(lcm(10))
 	fmt.Println(lcm(20))
 }
+
+// What is the smallest positive number that is evenly divisible by all of the
+// numbers from 1 to 20?

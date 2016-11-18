@@ -1,2 +1,3 @@
+[![Build Status](https://travis-ci.org/jackytck/projecteuler.svg?branch=master)](https://travis-ci.org/jackytck/projecteuler)
 # projecteuler
-For my learning purpose, solve problems in Project Euler in Go.
+Conquer ProjectEuler by Go.

@@ -6,7 +6,7 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve() int {
 	var sum int
 	digits := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 	pan := make(map[int]bool)
@@ -28,7 +28,12 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(sum)
+	return sum
 }
 
-// Sum of all products whose multiplicand/multiplier/product identity can be written as a 1 through 9 pandigital.
+func main() {
+	fmt.Println(solve())
+}
+
+// Sum of all products whose multiplicand/multiplier/product identity can be
+// written as a 1 through 9 pandigital.

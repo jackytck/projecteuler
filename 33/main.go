@@ -6,7 +6,7 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve() (int, int) {
 	var numerators []int
 	var denominators []int
 	for i := 11; i < 100; i++ {
@@ -40,7 +40,12 @@ func main() {
 	}
 	n := tools.ProdInts(numerators)
 	d := tools.ProdInts(denominators)
-	fmt.Println(tools.SimplifyFraction(n, d))
+	return tools.SimplifyFraction(n, d)
 }
 
-// Find the non-trivial 2-digits cancelling fractions, multiply and simplify them, and find the denominator.
+func main() {
+	fmt.Println(solve())
+}
+
+// Find the non-trivial 2-digits cancelling fractions, multiply and simplify
+// them, and find the denominator.

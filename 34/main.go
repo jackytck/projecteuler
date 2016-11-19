@@ -6,9 +6,9 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve() int {
 	var sum int
-	for i := 10; i < 10000000; i++ {
+	for i := 10; i < 2903040; i++ {
 		var s int
 		for _, d := range tools.Digits(i) {
 			s += int(tools.Factorial(d).Int64())
@@ -20,7 +20,11 @@ func main() {
 			sum += s
 		}
 	}
-	fmt.Println(sum)
+	return sum
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Sum of all numbers which are equal to the sum of the factorial of their digits.

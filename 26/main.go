@@ -30,7 +30,7 @@ func recurringCycle(a, b int) ([]int, int) {
 	return digits, period
 }
 
-func main() {
+func solve() int {
 	var maxInt, maxCycle int
 	for i := 2; i <= 1000; i++ {
 		_, c := recurringCycle(1, i)
@@ -39,7 +39,12 @@ func main() {
 			maxCycle = c
 		}
 	}
-	fmt.Println(maxInt)
+	return maxInt
 }
 
-// The number d for which 1/d has the longest recurring cycle in its decimal fraction part.
+func main() {
+	fmt.Println(solve())
+}
+
+// The number d for which 1/d has the longest recurring cycle in its decimal
+// fraction part.

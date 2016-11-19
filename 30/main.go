@@ -6,7 +6,7 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve() int {
 	low := 2
 	up := 354294 // 9**5 * 6
 	var sum int
@@ -15,7 +15,11 @@ func main() {
 			sum += i
 		}
 	}
-	fmt.Println(sum)
+	return sum
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Sum of all the numbers that can be written as the sum of fifth powers of their digits.

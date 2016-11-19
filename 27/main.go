@@ -24,7 +24,7 @@ func primeLength(q func(int) int) int {
 	return len
 }
 
-func main() {
+func solve() int {
 	var maxLen, prod int
 	for a := -999; a < 1000; a++ {
 		for b := -999; b < 1000; b++ {
@@ -35,7 +35,11 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(prod)
+	return prod
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Find the quadratic that produces the maximum number of primes.

@@ -547,3 +547,20 @@ func ConvergentSqrt(n, i int) (*big.Int, *big.Int) {
 	}
 	return p, q
 }
+
+// GCD computes the gcd of x and y.
+func GCD(x, y int) int {
+	if x == 0 && y == 0 {
+		return -1
+	}
+	if x < 0 {
+		x = -x
+	}
+	if y < 0 {
+		y = -y
+	}
+	for y != 0 {
+		x, y = y, x%y
+	}
+	return x
+}

@@ -6,6 +6,8 @@ import (
 	"log"
 	"strconv"
 	"strings"
+
+	"github.com/jackytck/projecteuler/tools"
 )
 
 func read(path string) [][]int {
@@ -115,24 +117,16 @@ func extend(slices ...[]int) []int {
 	return ret
 }
 
-func max(a []int) int {
-	var m int
-	for i, v := range a {
-		if i == 0 {
-			m = v
-		} else if v > m {
-			m = v
-		}
-	}
-	return m
-}
-
-func main() {
+func solve() int {
 	g := read("./input.txt")
 	w := 4
 	p := product
 	s := extend(east(g, w, p), southeast(g, w, p), east(transpose(g), w, p), southeast(flip(g), w, p))
-	fmt.Println(max(s))
+	return tools.MaxInt(s...)
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Greatest product of n-adjacent numbers in direction: up, down, left, right, or diagonally.

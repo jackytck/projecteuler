@@ -16,7 +16,6 @@ func main() {
 }
 
 // The number of ways of going from the top-left corner to the lower-right corner of a n-by-n grid.
-
 // Note:
 // Each step only has 2 variations, either right or down.
 // For each path, the sum of each variation must be equal to n.

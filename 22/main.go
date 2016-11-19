@@ -28,14 +28,18 @@ func read(path string) []string {
 	return ss
 }
 
-func main() {
+func solve(path string) int {
 	var score int
-	names := read("./p022_names.txt")
+	names := read(path)
 	sort.Strings(names)
 	for i, v := range names {
 		score += (i + 1) * nameScore(v)
 	}
-	fmt.Println(score)
+	return score
+}
+
+func main() {
+	fmt.Println(solve("./p022_names.txt"))
 }
 
 // Total name scores of names in a file.

@@ -21,7 +21,7 @@ func isSumOfTwoAbundant(n int, a []bool) bool {
 	return ret
 }
 
-func main() {
+func solve() int {
 	var sum int
 	ab := make([]bool, 28124)
 	for i := 12; i <= 28123; i++ {
@@ -32,7 +32,12 @@ func main() {
 			sum += i
 		}
 	}
-	fmt.Println(sum)
+	return sum
 }
 
-// Sum of all +ive integers which cannot be written as the sum of two abundant numbers.
+func main() {
+	fmt.Println(solve())
+}
+
+// Sum of all +ive integers which cannot be written as the sum of two abundant
+// numbers.

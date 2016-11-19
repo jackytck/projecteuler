@@ -12,9 +12,9 @@ func exp2(n uint) *big.Int {
 	return b
 }
 
-func powerDigitSum(n uint) int {
+func powerDigitSum(n int) int {
 	sum := 0
-	p := exp2(n)
+	p := exp2(uint(n))
 	for _, v := range p.Text(10) {
 		i, _ := strconv.Atoi(string(v))
 		sum += i

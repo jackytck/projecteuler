@@ -72,12 +72,16 @@ func count(s string) int {
 	return len(s)
 }
 
-func main() {
+func solve() int {
 	var sum int
 	for i := 1; i <= 1000; i++ {
 		sum += count(itowords(i))
 	}
-	fmt.Println(sum)
+	return sum
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Total number of letters used in writing out 1 to 1000 inclusive.

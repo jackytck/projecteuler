@@ -7,7 +7,8 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve() int {
+	var ans int
 	limit := 10000
 	primes := tools.SievePrime(limit)
 	m := make(map[int]bool)
@@ -30,13 +31,19 @@ func main() {
 			}
 		}
 		if !conjecture {
-			fmt.Println(i)
+			ans = i
 			break
 		}
 	}
+	return ans
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // The smallest odd composite that cannot be written as the sum of a prime and
 // twice a square.
 // Note:
-// This solution just uses brute force to try all possible primes for each odd composite.
+// This solution just uses brute force to try all possible primes for each odd
+// composite.

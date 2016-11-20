@@ -6,7 +6,8 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve() string {
+	var ans string
 	var p4 []int
 	isPrime := make(map[int]bool)
 	for _, p := range tools.SievePrime(10000) {
@@ -20,11 +21,17 @@ func main() {
 			a := p4[i]
 			b := p4[j]
 			c := b - a + b
-			if isPrime[c] && tools.IsPermute(a, b, c) {
-				fmt.Printf("%d%d%d\n", a, b, c)
+			if isPrime[c] && tools.IsPermute(a, b, c) && a != 1487 {
+				ans = fmt.Sprintf("%d%d%d", a, b, c)
 			}
 		}
 	}
+	return ans
 }
 
-// Find three 4-digit primes that are evenly spaced and are permutation of each other.
+func main() {
+	fmt.Println(solve())
+}
+
+// Find three 4-digit primes that are evenly spaced and are permutation of each
+// other.

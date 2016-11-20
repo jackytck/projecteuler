@@ -3,3 +3,6 @@ language: go
 go:
     - 1.7
     - master
+
+script:
+    go test ./... | sort -n -k2.37 | sed 's/github.com\/jackytck\/projecteuler\///g'

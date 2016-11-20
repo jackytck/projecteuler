@@ -7,15 +7,19 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve(limit int) int {
 	var sum int
-	for i := 1; i < 1000000; i++ {
+	for i := 1; i < limit; i++ {
 		b := strconv.FormatInt(int64(i), 2)
 		if tools.IsPalindromeInt(i) && tools.IsPalindromeString(b) {
 			sum += i
 		}
 	}
-	fmt.Println(sum)
+	return sum
+}
+func main() {
+	fmt.Println(solve(1000000))
 }
 
-// Sum of all numbers, less than one million, which are palindromic in base 10 and base 2.
+// Sum of all numbers, less than one million, which are palindromic in base 10
+// and base 2.

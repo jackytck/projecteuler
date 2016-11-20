@@ -16,7 +16,7 @@ func catProd(x int, n int) int {
 	return p
 }
 
-func main() {
+func solve() int {
 	var largest int
 	for i := 1; i < 10000; i++ {
 		j := 1
@@ -31,8 +31,11 @@ func main() {
 			j++
 		}
 	}
+	return largest
+}
 
-	fmt.Println(largest)
+func main() {
+	fmt.Println(solve())
 }
 
 // Largest 1 to 9 pandigital 9-digit number that can be formed as the concatenated product of an integer.

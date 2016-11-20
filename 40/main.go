@@ -25,12 +25,16 @@ func champernowne(n int) int {
 	return tools.DigitsIth(d+q, r-1)
 }
 
-func main() {
+func solve() int {
 	p := 1
 	for i := 0; i <= 6; i++ {
 		p *= champernowne(int(math.Pow10(i)))
 	}
-	fmt.Println(p)
+	return p
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Find the product of digits of d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000,

@@ -7,7 +7,7 @@ import (
 	lane "gopkg.in/oleiade/lane.v1"
 )
 
-func main() {
+func solve() int {
 	// find right-truncatable primes first
 	add := [4]int{1, 3, 7, 9}
 	var right []int
@@ -42,7 +42,11 @@ func main() {
 			both = append(both, r)
 		}
 	}
-	fmt.Println(tools.Sum(both...))
+	return tools.Sum(both...)
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Sum of all primes that are both left-truncatable and right-truncatable.

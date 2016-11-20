@@ -52,7 +52,7 @@ func keys(m map[int]bool) []int {
 	return ret
 }
 
-func main() {
+func solve() int {
 	bound := 30000
 	var minSum int
 	var found bool
@@ -111,7 +111,11 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(minSum)
+	return minSum
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Find the lowest sum for a set of five primes for which any two primes

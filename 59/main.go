@@ -60,23 +60,27 @@ func score(text string) int {
 	return cnt
 }
 
-func main() {
-	var key, raw string
+func solve(input string) int {
+	// var key, raw string
 	var maxScore int
 	var ascii []int
-	encrypted := read("./p059_cipher.txt")
+	encrypted := read(input)
 	for k := range keys() {
 		trial, num := decrypt(encrypted, k)
 		if s := score(trial); s > maxScore {
 			maxScore = s
-			key = k
-			raw = trial
+			// key = k
+			// raw = trial
 			ascii = num
 		}
 	}
-	fmt.Println(raw)
-	fmt.Println(key, maxScore)
-	fmt.Println(tools.Sum(ascii...))
+	// fmt.Println(raw)
+	// fmt.Println(key, maxScore)
+	return tools.Sum(ascii...)
+}
+
+func main() {
+	fmt.Println(solve("./p059_cipher.txt"))
 }
 
 // Decrypt the message and find the sum of the ASCII values in the original text.

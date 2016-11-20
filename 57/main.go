@@ -7,11 +7,11 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func count(limit int) int {
 	var cnt int
 	d := big.NewInt(3)
 	n := big.NewInt(2)
-	for i := 1; i < 1000; i++ {
+	for i := 1; i < limit; i++ {
 		p := big.NewInt(0)
 		p.Set(n)
 		n.Add(d, n)
@@ -20,7 +20,11 @@ func main() {
 			cnt++
 		}
 	}
-	fmt.Println(cnt)
+	return cnt
+}
+
+func main() {
+	fmt.Println(count(1000))
 }
 
 // In the first one-thousand expansions of square root of 2,

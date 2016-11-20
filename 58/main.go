@@ -6,7 +6,7 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve() int {
 	side := 3
 	prime := 3
 	corner := 9
@@ -21,7 +21,11 @@ func main() {
 		}
 		corner += step
 	}
-	fmt.Println(side)
+	return side
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // What is the side length of the square spiral for which the ratio of primes

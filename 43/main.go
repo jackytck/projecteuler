@@ -14,7 +14,7 @@ func check(n, d int) bool {
 	return n%d == 0
 }
 
-func main() {
+func solve() int {
 	var sum int
 	for v := range tools.Perms([]int{0, 1, 2, 3, 4, 6, 7, 8, 9}) {
 		p2 := extract(v, 1, 4)
@@ -28,7 +28,11 @@ func main() {
 			sum += tools.JoinInts(t)
 		}
 	}
-	fmt.Println(sum)
+	return sum
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Sum of all 0 to 9 pandigital numbers, where its sub-digits are divisible by

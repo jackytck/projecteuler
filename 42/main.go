@@ -8,8 +8,8 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
-	data, err := ioutil.ReadFile("p042_words.txt")
+func solve(path string) int {
+	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		panic(err)
 	}
@@ -21,7 +21,11 @@ func main() {
 			cnt++
 		}
 	}
-	fmt.Println(cnt)
+	return cnt
+}
+
+func main() {
+	fmt.Println(solve("p042_words.txt"))
 }
 
 // Find the number of triangle words.

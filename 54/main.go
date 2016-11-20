@@ -225,15 +225,20 @@ func test() {
 	}
 }
 
-func main() {
+func solve(input string) int {
 	var win int
-	inputs := tools.ReadFile("./p054_poker.txt")
+	inputs := tools.ReadFile(input)
 	for _, h := range inputs {
 		if compareHands(parseHands(h)) {
 			win++
 		}
 	}
 	fmt.Println(win)
+	return win
+}
+
+func main() {
+	fmt.Println(solve("./p054_poker.txt"))
 }
 
 // How many hands does Player 1 win?

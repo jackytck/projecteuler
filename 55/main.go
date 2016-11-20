@@ -7,7 +7,7 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve() int {
 	var cnt int
 	for i := 1; i < 10000; i++ {
 		lychrel := big.NewInt(int64(i))
@@ -19,7 +19,11 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(9999 - cnt)
+	return 9999 - cnt
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // How many Lychrel numbers are there below ten-thousand?

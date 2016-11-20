@@ -7,7 +7,7 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve() int {
 	var cnt int
 	million := big.NewInt(1000000)
 	for n := 1; n <= 100; n++ {
@@ -19,7 +19,11 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(cnt)
+	return cnt
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Number of values of nCr, where 1 ≤ n ≤ 100, that are greater than one-million.

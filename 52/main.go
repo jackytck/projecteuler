@@ -17,12 +17,17 @@ func check(x int) bool {
 	return ans
 }
 
-func main() {
+func solve() int {
 	i := 2
 	for !check(i) {
 		i++
 	}
-	fmt.Println(i, i*2, i*3, i*4, i*5, i*6)
+	// fmt.Println(i, i*2, i*3, i*4, i*5, i*6)
+	return i
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // The smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, contain

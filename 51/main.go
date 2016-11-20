@@ -49,7 +49,8 @@ func check(p int, primes map[int]bool) bool {
 	return false
 }
 
-func main() {
+func solve() int {
+	var ans int
 	primes := tools.SievePrime(1000000)
 	m := make(map[int]bool)
 	for _, p := range primes {
@@ -60,10 +61,15 @@ func main() {
 			continue
 		}
 		if check(p, m) {
-			fmt.Println(p)
+			ans = p
 			break
 		}
 	}
+	return ans
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Find the smallest prime which, by replacing part of the number with the same

@@ -110,7 +110,8 @@ func bfs(root *Node) (Chain, bool) {
 	return chain, found
 }
 
-func main() {
+func solve() int {
+	var ans int
 	p3, p4, p5, p6, p7, p8 := initNumber()
 
 	var nodes []Node
@@ -128,15 +129,18 @@ func main() {
 			continue
 		}
 		if chain, found := bfs(&nodes[i]); found {
-			var ans int
 			for _, n := range chain.nodes {
-				fmt.Println(n.fig, n.num)
+				// fmt.Println(n.fig, n.num)
 				ans += n.num
 			}
-			fmt.Println(ans)
 			break
 		}
 	}
+	return ans
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // Find the sum of the only ordered set of six cyclic 4-digit numbers for which

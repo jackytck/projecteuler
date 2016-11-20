@@ -10,14 +10,18 @@ func period(s int) int {
 	return len(tools.SqrtExapnd(s)) - 1
 }
 
-func main() {
+func solve(limit int) int {
 	var odd int
-	for n := 1; n <= 10000; n++ {
+	for n := 1; n <= limit; n++ {
 		if period(n)%2 == 1 {
 			odd++
 		}
 	}
-	fmt.Println(odd)
+	return odd
+}
+
+func main() {
+	fmt.Println(solve(10000))
 }
 
 // How many continued fractions for N ≤ 10000 have an odd period?

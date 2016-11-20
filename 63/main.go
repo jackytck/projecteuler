@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-func main() {
+func solve() int {
 	var cnt int
 	n := 1
 	var t int
@@ -14,7 +14,11 @@ func main() {
 		cnt += 10 - t
 		n++
 	}
-	fmt.Println(cnt)
+	return cnt
+}
+
+func main() {
+	fmt.Println(solve())
 }
 
 // How many n-digit positive integers exist which are also an nth power?

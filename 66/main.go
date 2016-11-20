@@ -7,11 +7,11 @@ import (
 	"github.com/jackytck/projecteuler/tools"
 )
 
-func main() {
+func solve(limit int) int {
 	var maxD int
 	// largest value of x among all minimal solutions
-	maxX, maxY := big.NewInt(0), big.NewInt(0)
-	for d := 2; d <= 1000; d++ {
+	maxX := big.NewInt(0)
+	for d := 2; d <= limit; d++ {
 		if tools.IsSquareNumber(d) {
 			continue
 		}
@@ -29,10 +29,15 @@ func main() {
 			}
 		}
 		if maxD == 0 || minX.Cmp(maxX) == 1 {
-			maxD, maxX, maxY = d, minX, minY
+			maxD, maxX = d, minX
 		}
 	}
-	fmt.Println(maxD, maxX, maxY)
+	// fmt.Println(maxD, maxX, maxY)
+	return maxD
+}
+
+func main() {
+	fmt.Println(solve(1000))
 }
 
 // Consider quadratic Diophantine equations of the form:

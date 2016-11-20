@@ -23,7 +23,8 @@ func hash(x int) int64 {
 	return tools.JoinIntsBig(d).Int64()
 }
 
-func main() {
+func solve() int {
+	var ans int
 	cubeMap := make(map[int64]Node)
 	i := 346
 	for {
@@ -36,8 +37,8 @@ func main() {
 			}
 			cubeMap[k] = n
 			if n.count == 5 {
-				b := n.base
-				fmt.Printf("%v = %v^3\n", b*b*b, b)
+				ans = n.base
+				// fmt.Printf("%v = %v^3\n", ans*ans*ans, ans)
 				break
 			}
 		} else {
@@ -45,9 +46,15 @@ func main() {
 		}
 		i++
 	}
+	return ans * ans * ans
 }
 
-// Find the smallest cube for which exactly five permutations of its digits are cube.
+func main() {
+	fmt.Println(solve())
+}
+
+// Find the smallest cube for which exactly five permutations of its digits are
+// cube.
 // Note:
 // Assume the first answer we see has exactly five permutations, but not at least
 // five.

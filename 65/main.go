@@ -30,11 +30,15 @@ func convergent(n int) *big.Int {
 	return b
 }
 
+func solve(nth int) int {
+	z := convergent(nth)
+	// fmt.Println(z)
+	// fmt.Println(tools.DigitSumBig(z))
+	return int(tools.DigitSumBig(z).Int64())
+}
+
 func main() {
-	n := 100
-	z := convergent(n)
-	fmt.Println(z)
-	fmt.Println(tools.DigitSumBig(z))
+	fmt.Println(solve(100))
 }
 
 // Find the sum of digits in the numerator of the 100th convergent of the

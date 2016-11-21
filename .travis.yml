@@ -4,5 +4,9 @@ go:
     - 1.7
     - master
 
+before_install:
+    - go get github.com/mattn/goveralls
+
 script:
-    go test ./... | sort -n -k2.37 | sed 's/github.com\/jackytck\/projecteuler\///g'
+    - go test ./... | sort -n -k2.37 | sed 's/github.com\/jackytck\/projecteuler\///g'
+    - $HOME/gopath/bin/goveralls -service=travis-ci

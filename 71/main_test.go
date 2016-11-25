@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestSolve(t *testing.T) {
+func TestP71(t *testing.T) {
 	cases := []struct {
 		in         int
 		out1, out2 int

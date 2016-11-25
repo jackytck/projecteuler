@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestSolve(t *testing.T) {
+func TestP70(t *testing.T) {
 	ans := 8319823
 	v := solve()
 	if v != ans {

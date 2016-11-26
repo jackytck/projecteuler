@@ -101,7 +101,7 @@ func solve() int {
 						if _, ok := fdd[pe]; !ok || (found && pe > minSum) {
 							continue
 						}
-						fmt.Println(pa, pb, pc, pd, pe)
+						// fmt.Println(pa, pb, pc, pd, pe)
 						if sum := tools.Sum(pa, pb, pc, pd, pe); !found || sum < minSum {
 							minSum = sum
 						}

@@ -3,6 +3,7 @@ package tools
 import (
 	"io/ioutil"
 	"log"
+	"strconv"
 	"strings"
 )
 
@@ -17,4 +18,28 @@ func ReadFile(path string) []string {
 		ss = ss[:len(ss)-1]
 	}
 	return ss
+}
+
+// ReadMatrix reads an integer matrix stored in a file of a given path.
+func ReadMatrix(path string) [][]int {
+	var m [][]int
+	lines, err := ioutil.ReadFile(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	ss := strings.Split(string(lines), "\n")
+	for i, row := range ss {
+		if row == "" {
+			continue
+		}
+		m = append(m, []int{})
+		for _, v := range strings.Split(row, ",") {
+			if v == "" {
+				continue
+			}
+			d, _ := strconv.Atoi(v)
+			m[i] = append(m[i], d)
+		}
+	}
+	return m
 }

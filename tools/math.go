@@ -586,3 +586,11 @@ func Sqrt(n, precision int) *big.Int {
 	}
 	return b.Div(b, hundred)
 }
+
+// AbsInt returns the absolute value of x.
+func AbsInt(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}

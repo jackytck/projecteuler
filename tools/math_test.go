@@ -40,3 +40,22 @@ func TestSqrt(t *testing.T) {
 		}
 	}
 }
+
+func TestAbsInt(t *testing.T) {
+	cases := []struct {
+		in  int
+		out int
+	}{
+		{2, 2},
+		{-2, 2},
+		{-3, 3},
+		{12, 12},
+		{-3889, 3889},
+	}
+	for _, c := range cases {
+		v := AbsInt(c.in)
+		if v != c.out {
+			t.Errorf("AbsInt: %v\tExpected: %v", v, c.out)
+		}
+	}
+}

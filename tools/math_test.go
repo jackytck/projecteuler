@@ -88,3 +88,21 @@ func TestCartProduct(t *testing.T) {
 		i++
 	}
 }
+
+func TestIncludesInt(t *testing.T) {
+	cases := []struct {
+		in1 []int
+		in2 int
+		out bool
+	}{
+		{[]int{1, 2, 3}, 2, true},
+		{[]int{1, 2, 3}, 4, false},
+		{[]int{1, 2, 3}, 8, false},
+	}
+	for _, c := range cases {
+		v := IncludesInt(c.in1, c.in2)
+		if v != c.out {
+			t.Errorf("Includes: %v\tExpected: %v", v, c.out)
+		}
+	}
+}

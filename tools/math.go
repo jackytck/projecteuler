@@ -628,3 +628,13 @@ func CartProduct(size, repeat int) chan []int {
 	}()
 	return c
 }
+
+// IncludesInt determines whether a slice includes a certain element.
+func IncludesInt(s []int, e int) bool {
+	for _, v := range s {
+		if v == e {
+			return true
+		}
+	}
+	return false
+}

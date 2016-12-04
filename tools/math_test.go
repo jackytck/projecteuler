@@ -59,3 +59,32 @@ func TestAbsInt(t *testing.T) {
 		}
 	}
 }
+
+func TestCartProduct(t *testing.T) {
+	s := 8
+
+	var ref [][]int
+	for i := 0; i < s; i++ {
+		for j := 0; j < s; j++ {
+			for k := 0; k < s; k++ {
+				for u := 0; u < s; u++ {
+					for v := 0; v < s; v++ {
+						for w := 0; w < s; w++ {
+							ref = append(ref, []int{i, j, k, u, v, w})
+						}
+					}
+				}
+			}
+		}
+	}
+
+	var i int
+	for p := range CartProduct(s, 6) {
+		for j, v := range p {
+			if ref[i][j] != v {
+				t.Errorf("CartProduct: %v\tExpected: %v", v, ref[i][j])
+			}
+		}
+		i++
+	}
+}

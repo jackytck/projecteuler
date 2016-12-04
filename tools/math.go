@@ -594,3 +594,37 @@ func AbsInt(x int) int {
 	}
 	return x
 }
+
+// CartProduct produces the indices of the Cartesian Product.
+func CartProduct(size, repeat int) chan []int {
+	c := make(chan []int)
+	go func() {
+		defer close(c)
+		if size <= 1 || repeat < 1 {
+			c <- []int{0}
+		} else {
+			list := make([]int, repeat)
+			for {
+				copy := append([]int{}, list...)
+				c <- copy
+
+				// add one to the last index
+				list[repeat-1]++
+
+				// carry
+				for i := repeat - 1; i > 0; i-- {
+					if list[i] == size {
+						list[i] = 0
+						list[i-1]++
+					}
+				}
+
+				// exhausted all
+				if list[0] == size {
+					return
+				}
+			}
+		}
+	}()
+	return c
+}

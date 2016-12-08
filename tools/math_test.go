@@ -106,3 +106,30 @@ func TestIncludesInt(t *testing.T) {
 		}
 	}
 }
+
+func TestPellFundamental(t *testing.T) {
+	cases := []struct {
+		in   int
+		out1 int64
+		out2 int64
+	}{
+		{2, 3, 2},
+		{3, 2, 1},
+		{5, 9, 4},
+		{6, 5, 2},
+		{7, 8, 3},
+		{8, 3, 1},
+		{10, 19, 6},
+		{11, 10, 3},
+		{12, 7, 2},
+		{13, 649, 180},
+		{14, 15, 4},
+		{15, 4, 1},
+	}
+	for _, c := range cases {
+		v1, v2 := PellFundamental(c.in)
+		if v1.Int64() != c.out1 || v2.Int64() != c.out2 {
+			t.Errorf("PellFundamental: %v %v\tExpected: %v %v", v1, v2, c.out1, c.out2)
+		}
+	}
+}

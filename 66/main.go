@@ -16,18 +16,7 @@ func solve(limit int) int {
 			continue
 		}
 		// minimal solution of x and y
-		minX, minY := big.NewInt(0), big.NewInt(0)
-		for i := 1; true; i++ {
-			x, y := tools.ConvergentSqrt(d, i)
-			minX.Set(x)
-			minY.Set(y)
-			x.Mul(x, x)
-			y.Mul(y, y)
-			y.Mul(y, big.NewInt(int64(-d)))
-			if x.Add(x, y); x.Int64() == 1 {
-				break
-			}
-		}
+		minX, _ := tools.PellFundamental(d)
 		if maxD == 0 || minX.Cmp(maxX) == 1 {
 			maxD, maxX = d, minX
 		}

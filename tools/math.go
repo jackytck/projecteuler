@@ -548,6 +548,28 @@ func ConvergentSqrt(n, i int) (*big.Int, *big.Int) {
 	return p, q
 }
 
+// PellFundamental gives the fundamental solution (mx, my) of Pell's equaltion:
+// x^2 - n * y^2 = 1, where n is a given positive nonsquare integer and integer
+// solutions are sought for x and y.
+func PellFundamental(n int) (*big.Int, *big.Int) {
+	mx, my := big.NewInt(1), big.NewInt(0)
+	if IsSquareNumber(n) {
+		return mx, my
+	}
+	for i := 1; true; i++ {
+		x, y := ConvergentSqrt(n, i)
+		mx.Set(x)
+		my.Set(y)
+		x.Mul(x, x)
+		y.Mul(y, y)
+		y.Mul(y, big.NewInt(int64(-n)))
+		if x.Add(x, y); x.Int64() == 1 {
+			break
+		}
+	}
+	return mx, my
+}
+
 // GCD computes the gcd of x and y.
 func GCD(x, y int) int {
 	if x == 0 && y == 0 {

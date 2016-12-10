@@ -660,3 +660,16 @@ func IncludesInt(s []int, e int) bool {
 	}
 	return false
 }
+
+// SetInt returns the set of int from the given slice of int.
+func SetInt(s []int) []int {
+	m := make(map[int]bool)
+	for _, v := range s {
+		m[v] = true
+	}
+	var keys []int
+	for k := range m {
+		keys = append(keys, k)
+	}
+	return keys
+}

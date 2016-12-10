@@ -1,6 +1,9 @@
 package tools
 
-import "testing"
+import (
+	"sort"
+	"testing"
+)
 
 func TestGCD(t *testing.T) {
 	cases := []struct {
@@ -130,6 +133,32 @@ func TestPellFundamental(t *testing.T) {
 		v1, v2 := PellFundamental(c.in)
 		if v1.Int64() != c.out1 || v2.Int64() != c.out2 {
 			t.Errorf("PellFundamental: %v %v\tExpected: %v %v", v1, v2, c.out1, c.out2)
+		}
+	}
+}
+
+func TestSetInt(t *testing.T) {
+	cases := []struct {
+		in  []int
+		out []int
+	}{
+		{[]int{1, 2, 3, 4, 5}, []int{1, 2, 3, 4, 5}},
+		{[]int{1, 1, 0, 5, 5}, []int{0, 1, 5}},
+		{[]int{2, 0, 4, 5, 4}, []int{0, 2, 4, 5}},
+	}
+	for _, c := range cases {
+		d := SetInt(c.in)
+		sort.Ints(d)
+		sort.Ints(c.out)
+		match := true
+		for i, v := range d {
+			if v != c.out[i] {
+				match = false
+				break
+			}
+		}
+		if !match {
+			t.Errorf("SetInt: %v\tExpected: %v", d, c.out)
 		}
 	}
 }

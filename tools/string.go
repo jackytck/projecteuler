@@ -48,3 +48,16 @@ func JoinIntsString(a ...int) string {
 	}
 	return s
 }
+
+// SetString returns the set of string from the given slice of string.
+func SetString(s []string) []string {
+	m := make(map[string]bool)
+	for _, v := range s {
+		m[v] = true
+	}
+	var keys []string
+	for k := range m {
+		keys = append(keys, k)
+	}
+	return keys
+}

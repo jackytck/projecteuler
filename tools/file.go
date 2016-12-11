@@ -20,6 +20,17 @@ func ReadFile(path string) []string {
 	return ss
 }
 
+// ReadWords reads content of a file that contains a line of words:
+// "XX", "YYY", "ZZZ"
+func ReadWords(path string) []string {
+	data, err := ioutil.ReadFile(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	line := strings.Replace(string(data), "\"", "", -1)
+	return strings.Split(string(line), ",")
+}
+
 // ReadMatrix reads an integer matrix stored in a file of a given path.
 func ReadMatrix(path string) [][]int {
 	var m [][]int

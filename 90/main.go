@@ -8,18 +8,18 @@ import (
 
 func extend(d []int) []int {
 	ret := d
-	if tools.Includes(d, 6) && !tools.Includes(d, 9) {
+	if tools.IncludesInt(d, 6) && !tools.IncludesInt(d, 9) {
 		ret = append(d, 9)
 	}
-	if tools.Includes(d, 9) && !tools.Includes(d, 6) {
+	if tools.IncludesInt(d, 9) && !tools.IncludesInt(d, 6) {
 		ret = append(d, 6)
 	}
 	return ret
 }
 
 func isValidPair(d1, d2 []int, a, b int) bool {
-	return tools.Includes(d1, a) && tools.Includes(d2, b) ||
-		tools.Includes(d1, b) && tools.Includes(d2, a)
+	return tools.IncludesInt(d1, a) && tools.IncludesInt(d2, b) ||
+		tools.IncludesInt(d1, b) && tools.IncludesInt(d2, a)
 }
 
 func isValid(d1, d2 []int) bool {

@@ -673,3 +673,24 @@ func SetInt(s []int) []int {
 	}
 	return keys
 }
+
+// LagrangePoly gives the Lagrange interpolating polynomial P(x) of
+// degree <=(n-1) that passes through the n given points.
+func LagrangePoly(xs []float64, ys []float64) func(float64) float64 {
+	p := func(x float64) float64 {
+		var s float64
+		for i, u := range ys {
+			m := u
+			xi := xs[i]
+			for j, v := range xs {
+				if i == j {
+					continue
+				}
+				m *= (x - v) / (xi - v)
+			}
+			s += m
+		}
+		return s
+	}
+	return p
+}

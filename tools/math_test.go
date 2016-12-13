@@ -162,3 +162,29 @@ func TestSetInt(t *testing.T) {
 		}
 	}
 }
+
+func TestLagrangePoly(t *testing.T) {
+	cases := []struct {
+		in1 []float64
+		in2 []float64
+		in3 []float64
+		out []float64
+	}{
+		{[]float64{1, 2, 3}, []float64{1, 4, 9},
+			[]float64{-1, -2, -3, 4, 5}, []float64{1, 4, 9, 16, 25}},
+		{[]float64{1}, []float64{1}, []float64{1, 2}, []float64{1, 1}},
+		{[]float64{1, 2}, []float64{1, 8}, []float64{1, 2, 3}, []float64{1, 8, 15}},
+		{[]float64{1, 2, 3}, []float64{1, 8, 27},
+			[]float64{-1, -2, -3, 1, 2, 3, 4}, []float64{23, 52, 93, 1, 8, 27, 58}},
+		{[]float64{1, 2, 3, 4}, []float64{1, 8, 27, 64},
+			[]float64{1, 2, 3, 4, 5}, []float64{1, 8, 27, 64, 125}},
+	}
+	for _, c := range cases {
+		p := LagrangePoly(c.in1, c.in2)
+		for i, v := range c.in3 {
+			if p(v) != c.out[i] {
+				t.Errorf("LagrangePoly: %v\tExpected: %v", p(v), c.out[i])
+			}
+		}
+	}
+}

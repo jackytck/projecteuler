@@ -694,3 +694,10 @@ func LagrangePoly(xs []float64, ys []float64) func(float64) float64 {
 	}
 	return p
 }
+
+// Catalan returns the Catalan Number of n.
+func Catalan(n int64) *big.Int {
+	z := big.NewInt(0)
+	z.Binomial(2*n, n)
+	return z.Quo(z, big.NewInt(n+1))
+}

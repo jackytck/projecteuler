@@ -225,30 +225,8 @@ func MaxInt(a ...int) int {
 
 // SimplifyFraction simplifies a/b and return the (numerator, denominator).
 func SimplifyFraction(a, b int) (int, int) {
-	pa := PrimeFactors(a)
-	pb := PrimeFactors(b)
-	for k, v := range pa {
-		v2, ok := pb[k]
-		if !ok {
-			continue
-		}
-		m := MinInt(v, v2)
-		pa[k] = v - m
-		pb[k] = v2 - m
-	}
-	sa := 1
-	for k, v := range pa {
-		for i := 0; i < v; i++ {
-			sa *= k
-		}
-	}
-	sb := 1
-	for k, v := range pb {
-		for i := 0; i < v; i++ {
-			sb *= k
-		}
-	}
-	return sa, sb
+	gcd := GCD(a, b)
+	return a / gcd, b / gcd
 }
 
 // Digits returns the individual digits as a slice of int.

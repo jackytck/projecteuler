@@ -5,6 +5,36 @@ import (
 	"testing"
 )
 
+func TestNumDivisors(t *testing.T) {
+	cases := []struct {
+		in  int
+		out int
+	}{
+		{1, 1},
+		{2, 2},
+		{3, 2},
+		{4, 3},
+		{5, 2},
+		{6, 4},
+		{7, 2},
+		{8, 4},
+		{9, 3},
+		{10, 4},
+		{11, 2},
+		{12, 6},
+		{13, 2},
+		{14, 4},
+		{15, 4},
+		{16, 5},
+	}
+	for _, c := range cases {
+		v := NumDivisors(c.in)
+		if v != c.out {
+			t.Errorf("NumDivisors: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

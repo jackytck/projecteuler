@@ -41,6 +41,16 @@ func SumDivisors(n int) int {
 	return Sum(Divisors(n)...)
 }
 
+// NumDivisors gives the number of divisors of n.
+func NumDivisors(n int) int {
+	c := 1
+	p := PrimeFactors(n)
+	for _, v := range p {
+		c *= v + 1
+	}
+	return c
+}
+
 // Perms return a channel of each permutation of a slice.
 func Perms(slice []int) chan []int {
 	c := make(chan []int)

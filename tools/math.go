@@ -128,6 +128,31 @@ func SievePrime(n int) []int {
 	return primes
 }
 
+// PrimeRange gives the primes in range [a, b).
+func PrimeRange(a, b int) []int {
+	var primes []int
+	if b <= a {
+		return primes
+	}
+	ps := SievePrime(SqrtInt(b) + 1)
+	size := b - a + 1
+	comp := make([]bool, size)
+	for _, p := range ps {
+		for j := a/p*p - a; j < size; j += p {
+			if j < 0 {
+				continue
+			}
+			comp[j] = true
+		}
+	}
+	for i, v := range comp {
+		if !v && i < size {
+			primes = append(primes, a+i)
+		}
+	}
+	return primes
+}
+
 // Exp computes x to the power of y.
 func Exp(x, y int) *big.Int {
 	a := big.NewInt(1)

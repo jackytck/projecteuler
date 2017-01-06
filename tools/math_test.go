@@ -5,6 +5,24 @@ import (
 	"testing"
 )
 
+func TestSum(t *testing.T) {
+	cases := []struct {
+		in  []int
+		out int
+	}{
+		{[]int{1, 2, 3}, 6},
+		{[]int{-3, -12, 7}, -8},
+		{[]int{2, 3, 5, 7, 11, 13}, 41},
+		{[]int{1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144}, 376},
+	}
+	for _, c := range cases {
+		v := Sum(c.in...)
+		if v != c.out {
+			t.Errorf("Sum: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestNumDivisors(t *testing.T) {
 	cases := []struct {
 		in  int

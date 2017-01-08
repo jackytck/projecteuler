@@ -54,6 +54,31 @@ func TestDivisors(t *testing.T) {
 	}
 }
 
+func TestSumDivisors(t *testing.T) {
+	cases := []struct {
+		in  int
+		out int
+	}{
+		{1, 1},
+		{2, 1},
+		{3, 1},
+		{4, 3},
+		{5, 1},
+		{66, 78},
+		{71, 1},
+		{72, 123},
+		{180, 366},
+		{576, 1075},
+		{972, 1576},
+	}
+	for _, c := range cases {
+		v := SumDivisors(c.in)
+		if v != c.out {
+			t.Errorf("SumDivisors: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestNumDivisors(t *testing.T) {
 	cases := []struct {
 		in  int

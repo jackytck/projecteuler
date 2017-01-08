@@ -109,6 +109,34 @@ func TestNumDivisors(t *testing.T) {
 	}
 }
 
+func TestPerms(t *testing.T) {
+	cases := []struct {
+		in  []int
+		out []int
+	}{
+		{[]int{1, 2, 3}, []int{1, 2, 3, 1, 3, 2, 2, 1, 3, 2, 3, 1, 3, 1, 2, 3, 2, 1}},
+		{[]int{2, 3, 5, 7}, []int{2, 3, 5, 7, 2, 3, 7, 5, 2, 5, 3, 7, 2, 5, 7, 3, 2,
+			7, 3, 5, 2, 7, 5, 3, 3, 2, 5, 7, 3, 2, 7, 5, 3, 5, 2, 7, 3, 5, 7, 2, 3, 7,
+			2, 5, 3, 7, 5, 2, 5, 2, 3, 7, 5, 2, 7, 3, 5, 3, 2, 7, 5, 3, 7, 2, 5, 7, 2,
+			3, 5, 7, 3, 2, 7, 2, 3, 5, 7, 2, 5, 3, 7, 3, 2, 5, 7, 3, 5, 2, 7, 5, 2, 3,
+			7, 5, 3, 2}},
+	}
+	for _, c := range cases {
+		var i int
+		for arry := range Perms(c.in) {
+			for _, v := range arry {
+				if v != c.out[i] {
+					t.Errorf("Perms: %v\tExpected: %v", v, c.out[i])
+				}
+				i++
+			}
+		}
+		if i != len(c.out) {
+			t.Errorf("Perms: %v\tExpected: %v", i, len(c.out))
+		}
+	}
+}
+
 func TestPrimeRange(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

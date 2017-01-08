@@ -166,6 +166,7 @@ func TestGCD(t *testing.T) {
 		{54, 24, 6},
 		{18, 48, 6},
 		{42, 56, 14},
+		{42, -56, 14},
 		{-35, 280, 35},
 		{252, 105, 21},
 	}
@@ -241,6 +242,11 @@ func TestCartProduct(t *testing.T) {
 		}
 		i++
 	}
+
+	one := <-CartProduct(1, 1)
+	if len(one) != 1 || one[0] != 0 {
+		t.Errorf("CartProduct: %v\tExpected: [0]", one)
+	}
 }
 
 func TestIncludesInt(t *testing.T) {
@@ -279,6 +285,7 @@ func TestPellFundamental(t *testing.T) {
 		{13, 649, 180},
 		{14, 15, 4},
 		{15, 4, 1},
+		{81, 1, 0},
 	}
 	for _, c := range cases {
 		v1, v2 := PellFundamental(c.in)

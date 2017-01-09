@@ -137,6 +137,26 @@ func TestPerms(t *testing.T) {
 	}
 }
 
+func TestDivmod(t *testing.T) {
+	cases := []struct {
+		in1, in2   int
+		out1, out2 int
+	}{
+		{0, 1, 0, 0},
+		{27, 16, 1, 11},
+		{30, 3, 10, 0},
+		{35, 3, 11, 2},
+		{16, 6, 2, 4},
+		{32, 12, 2, 8},
+	}
+	for _, c := range cases {
+		v1, v2 := Divmod(c.in1, c.in2)
+		if v1 != c.out1 || v2 != c.out2 {
+			t.Errorf("Divmod: %v, %v\tExpected: %v, %v", v1, v2, c.out1, c.out2)
+		}
+	}
+}
+
 func TestPrimeRange(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

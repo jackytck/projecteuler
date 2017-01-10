@@ -157,6 +157,32 @@ func TestDivmod(t *testing.T) {
 	}
 }
 
+func TestPrimeFactors(t *testing.T) {
+	cases := []struct {
+		in  int
+		out map[int]int
+	}{
+		{1, map[int]int{}},
+		{2, map[int]int{2: 1}},
+		{64, map[int]int{2: 6}},
+		{100, map[int]int{2: 2, 5: 2}},
+		{401, map[int]int{401: 1}},
+		{1203, map[int]int{3: 1, 401: 1}},
+		{1234, map[int]int{2: 1, 617: 1}},
+	}
+	for _, c := range cases {
+		m := PrimeFactors(c.in)
+		for k, v := range m {
+			if v != c.out[k] {
+				t.Errorf("PrimeFactors: %v, %v\tExpected: %v, %v", k, v, k, c.out[k])
+			}
+		}
+		if len(m) != len(c.out) {
+			t.Errorf("PrimeFactors: len(%v)\tExpected: %v", len(m), len(c.out))
+		}
+	}
+}
+
 func TestPrimeRange(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

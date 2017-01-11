@@ -183,6 +183,28 @@ func TestPrimeFactors(t *testing.T) {
 	}
 }
 
+func TestIsPrime(t *testing.T) {
+	cases := []struct {
+		in  int
+		out bool
+	}{
+		{1, false},
+		{2, true},
+		{3, true},
+		{4, false},
+		{1234, false},
+		{1235, false},
+		{15486803, true},
+		{15486873, false},
+		{179426447, true},
+	}
+	for _, c := range cases {
+		if v := IsPrime((c.in)); v != c.out {
+			t.Errorf("isPrime: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestPrimeRange(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

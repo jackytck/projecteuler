@@ -200,7 +200,30 @@ func TestIsPrime(t *testing.T) {
 	}
 	for _, c := range cases {
 		if v := IsPrime((c.in)); v != c.out {
-			t.Errorf("isPrime: %v\tExpected: %v", v, c.out)
+			t.Errorf("IsPrime: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
+func TestSievePrime(t *testing.T) {
+	cases := []struct {
+		in  int
+		out []int
+	}{
+		{2, []int{}},
+		{10, []int{2, 3, 5, 7}},
+		{100, []int{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59,
+			61, 67, 71, 73, 79, 83, 89, 97}},
+	}
+	for _, c := range cases {
+		ps := SievePrime(c.in)
+		for i, p := range ps {
+			if p != c.out[i] {
+				t.Errorf("SievePrime: %v\tExpected: %v", p, c.out[i])
+			}
+		}
+		if len(ps) != len(c.out) {
+			t.Errorf("SievePrime: len(%v)\tExpected: len(%v)", len(ps), len(c.out))
 		}
 	}
 }

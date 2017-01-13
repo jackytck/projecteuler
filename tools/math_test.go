@@ -1,6 +1,7 @@
 package tools
 
 import (
+	"math/big"
 	"sort"
 	"testing"
 )
@@ -253,6 +254,23 @@ func TestPrimeRange(t *testing.T) {
 			if v != c.out[i] {
 				t.Errorf("PrimeRange: %v\tExpected: %v", v, c.out[i])
 			}
+		}
+	}
+}
+
+func TestExp(t *testing.T) {
+	cases := []struct {
+		in1 int
+		in2 int
+		out *big.Int
+	}{
+		{2, 2, big.NewInt(4)},
+		{2, 10, big.NewInt(1024)},
+		{5, 23, big.NewInt(11920928955078125)},
+	}
+	for _, c := range cases {
+		if v := Exp(c.in1, c.in2); v.Cmp(c.out) != 0 {
+			t.Errorf("Exp: %v\tExpected: %v", v, c.out)
 		}
 	}
 }

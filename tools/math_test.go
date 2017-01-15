@@ -293,6 +293,21 @@ func TestDigitSum(t *testing.T) {
 	}
 }
 
+func TestDigitSumBig(t *testing.T) {
+	cases := []struct {
+		in  *big.Int
+		out *big.Int
+	}{
+		{big.NewInt(123456789), big.NewInt(45)},
+		{big.NewInt(9223372036854775807), big.NewInt(88)},
+	}
+	for _, c := range cases {
+		if v := DigitSumBig(c.in); v.Cmp(c.out) != 0 {
+			t.Errorf("DigitSumBig: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestSimplifyFraction(t *testing.T) {
 	cases := []struct {
 		in1, in2   int

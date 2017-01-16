@@ -308,6 +308,22 @@ func TestDigitSumBig(t *testing.T) {
 	}
 }
 
+func TestJoinInts(t *testing.T) {
+	cases := []struct {
+		in  []int
+		out int
+	}{
+		{[]int{1, 2, 3, 4, 5, 6, 7}, 1234567},
+		{[]int{0, 2, 3, 0, 5, 0, 7}, 230507},
+		{[]int{2, 3, 5, 7, 1}, 23571},
+	}
+	for _, c := range cases {
+		if v := JoinInts(c.in); v != c.out {
+			t.Errorf("JoinInts: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestSimplifyFraction(t *testing.T) {
 	cases := []struct {
 		in1, in2   int

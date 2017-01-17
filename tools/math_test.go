@@ -324,6 +324,23 @@ func TestJoinInts(t *testing.T) {
 	}
 }
 
+func TestJoinIntsBig(t *testing.T) {
+	cases := []struct {
+		in  []int
+		out *big.Int
+	}{
+		{[]int{1, 2, 3, 4, 5, 6, 7}, big.NewInt(1234567)},
+		{[]int{0, 2, 3, 0, 5, 0, 7}, big.NewInt(230507)},
+		{[]int{2, 3, 5, 7, 1}, big.NewInt(23571)},
+		{[]int{2, 2, 4, 6, 3, 8, 7, 2, 3, 6, 9, 2, 8, 7, 8, 5, 7, 1}, big.NewInt(224638723692878571)},
+	}
+	for _, c := range cases {
+		if v := JoinIntsBig(c.in); v.Cmp(c.out) != 0 {
+			t.Errorf("JoinIntsBig: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestSimplifyFraction(t *testing.T) {
 	cases := []struct {
 		in1, in2   int

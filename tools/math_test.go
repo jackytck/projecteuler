@@ -341,6 +341,23 @@ func TestJoinIntsBig(t *testing.T) {
 	}
 }
 
+func TestProdInts(t *testing.T) {
+	cases := []struct {
+		in  []int
+		out int
+	}{
+		{[]int{1, 2, 3, 4, 5, 6}, 720},
+		{[]int{0, 2, 3, 4, 5, 6, 3, 12}, 0},
+		{[]int{2, 3, 5, 7, 11, 13}, 30030},
+		{[]int{12, 46, 78, 9, 2, 13}, 10075104},
+	}
+	for _, c := range cases {
+		if v := ProdInts(c.in); v != c.out {
+			t.Errorf("ProdInts: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestSimplifyFraction(t *testing.T) {
 	cases := []struct {
 		in1, in2   int

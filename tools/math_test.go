@@ -358,6 +358,22 @@ func TestProdInts(t *testing.T) {
 	}
 }
 
+func TestMinInt(t *testing.T) {
+	cases := []struct {
+		in  []int
+		out int
+	}{
+		{[]int{2, 3, 5, 7, 11, 13, 17, 19, 23}, 2},
+		{[]int{2, 3, 4, -1}, -1},
+		{[]int{1, 3, 1, 0, 2, 689}, 0},
+	}
+	for _, c := range cases {
+		if v := MinInt(c.in...); v != c.out {
+			t.Errorf("MintInt: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestSimplifyFraction(t *testing.T) {
 	cases := []struct {
 		in1, in2   int

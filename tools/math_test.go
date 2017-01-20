@@ -374,6 +374,22 @@ func TestMinInt(t *testing.T) {
 	}
 }
 
+func TestMaxInt(t *testing.T) {
+	cases := []struct {
+		in  []int
+		out int
+	}{
+		{[]int{2, 3, 5, 7, 11, 13, 17, 19, 23}, 23},
+		{[]int{2, 3, 4, -1}, 4},
+		{[]int{1, 3, 1, 0, 2, 689}, 689},
+	}
+	for _, c := range cases {
+		if v := MaxInt(c.in...); v != c.out {
+			t.Errorf("MaxtInt: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestSimplifyFraction(t *testing.T) {
 	cases := []struct {
 		in1, in2   int

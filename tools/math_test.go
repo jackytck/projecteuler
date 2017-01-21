@@ -408,6 +408,28 @@ func TestSimplifyFraction(t *testing.T) {
 	}
 }
 
+func TestDigits(t *testing.T) {
+	cases := []struct {
+		in  int
+		out []int
+	}{
+		{0, []int{0}},
+		{123, []int{1, 2, 3}},
+		{2357111317, []int{2, 3, 5, 7, 1, 1, 1, 3, 1, 7}},
+	}
+	for _, c := range cases {
+		ds := Digits(c.in)
+		for i, v := range ds {
+			if v != c.out[i] {
+				t.Errorf("Digits: %v\tExpected: %v", v, c.out[i])
+			}
+		}
+		if len(ds) != len(c.out) {
+			t.Errorf("Digits: len(%v)\tExpected: len(%v)", len(ds), len(c.out))
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

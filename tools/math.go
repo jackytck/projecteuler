@@ -256,6 +256,9 @@ func SimplifyFraction(a, b int) (int, int) {
 
 // Digits returns the individual digits as a slice of int.
 func Digits(n int) []int {
+	if n == 0 {
+		return []int{0}
+	}
 	var d []int
 	for n > 0 {
 		d = append([]int{n % 10}, d...)

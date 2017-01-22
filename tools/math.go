@@ -269,8 +269,11 @@ func Digits(n int) []int {
 
 // DigitsBig returns the individual digits of a big.Int as a slice of int.
 func DigitsBig(n *big.Int) []int {
-	var d []int
 	x := big.NewInt(0)
+	if n.Cmp(x) == 0 {
+		return []int{0}
+	}
+	var d []int
 	x.Set(n)
 	zero := big.NewInt(0)
 	ten := big.NewInt(10)

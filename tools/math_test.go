@@ -430,6 +430,29 @@ func TestDigits(t *testing.T) {
 	}
 }
 
+func TestDigitsBig(t *testing.T) {
+	cases := []struct {
+		in  *big.Int
+		out []int
+	}{
+		{big.NewInt(0), []int{0}},
+		{big.NewInt(1234567890), []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}},
+		{big.NewInt(1123581321345589144), []int{1, 1, 2, 3, 5, 8, 1, 3, 2, 1, 3, 4,
+			5, 5, 8, 9, 1, 4, 4}},
+	}
+	for _, c := range cases {
+		ds := DigitsBig(c.in)
+		for i, v := range ds {
+			if v != c.out[i] {
+				t.Errorf("DigitsBig: %v\tExpected: %v", v, c.out[i])
+			}
+		}
+		if len(ds) != len(c.out) {
+			t.Errorf("DigitsBig: len(%v)\tExpected: len(%v)", len(ds), len(c.out))
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

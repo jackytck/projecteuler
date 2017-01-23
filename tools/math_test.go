@@ -453,6 +453,25 @@ func TestDigitsBig(t *testing.T) {
 	}
 }
 
+func TestDigitsIth(t *testing.T) {
+	cases := []struct {
+		in1 int
+		in2 int
+		out int
+	}{
+		{123456, -123, -1},
+		{123456, 0, 1},
+		{2357111317, 7, 3},
+		{27141816, 8, -1},
+		{3141516, 2, 4},
+	}
+	for _, c := range cases {
+		if v := DigitsIth(c.in1, c.in2); v != c.out {
+			t.Errorf("DigitsIth: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

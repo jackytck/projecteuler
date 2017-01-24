@@ -472,6 +472,28 @@ func TestDigitsIth(t *testing.T) {
 	}
 }
 
+func TestReverseSliceInts(t *testing.T) {
+	cases := []struct {
+		in  []int
+		out []int
+	}{
+		{[]int{1, 2, 3, 4, 5, 6, 7}, []int{7, 6, 5, 4, 3, 2, 1}},
+		{[]int{2, 3, 5, 7, 11, 13, 17}, []int{17, 13, 11, 7, 5, 3, 2}},
+		{[]int{0, 72, 5, -12, 7, 4, 17}, []int{17, 4, 7, -12, 5, 72, 0}},
+	}
+	for _, c := range cases {
+		rs := ReverseSliceInts(c.in)
+		for i, v := range rs {
+			if v != c.out[i] {
+				t.Errorf("ReverseSliceInts: %v\tExpected: %v", v, c.out[i])
+			}
+		}
+		if len(rs) != len(c.out) {
+			t.Errorf("ReverseSliceInts: len(%v)\tExpected: len(%v)", len(rs), len(c.out))
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

@@ -304,7 +304,7 @@ func ReverseSliceInts(a []int) []int {
 	return r
 }
 
-// ReverseInt reverses a given int.
+// ReverseInt reverses a non-negative int.
 func ReverseInt(n int) int {
 	return JoinInts(ReverseSliceInts(Digits(n)))
 }

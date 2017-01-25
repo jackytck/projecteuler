@@ -494,6 +494,24 @@ func TestReverseSliceInts(t *testing.T) {
 	}
 }
 
+func TestReverseInt(t *testing.T) {
+	cases := []struct {
+		in  int
+		out int
+	}{
+		{0, 0},
+		{1, 1},
+		{2357111317, 7131117532},
+		{112358132134, 431231853211},
+	}
+	for _, c := range cases {
+		if v := ReverseInt(c.in); v != c.out {
+			t.Errorf("ReverseInt: %v\tExpected: %v", v, c.out)
+
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

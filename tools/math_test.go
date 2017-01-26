@@ -507,7 +507,22 @@ func TestReverseInt(t *testing.T) {
 	for _, c := range cases {
 		if v := ReverseInt(c.in); v != c.out {
 			t.Errorf("ReverseInt: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
 
+func TestReverseIntBig(t *testing.T) {
+	cases := []struct {
+		in  *big.Int
+		out *big.Int
+	}{
+		{big.NewInt(0), big.NewInt(0)},
+		{big.NewInt(1234567890987654321), big.NewInt(1234567890987654321)},
+		{big.NewInt(1123581321345589144), big.NewInt(4419855431231853211)},
+	}
+	for _, c := range cases {
+		if v := ReverseIntBig(c.in); v.Cmp(c.out) != 0 {
+			t.Errorf("ReverseIntBig: %v\tExpected: %v", v, c.out)
 		}
 	}
 }

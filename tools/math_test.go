@@ -527,6 +527,25 @@ func TestReverseIntBig(t *testing.T) {
 	}
 }
 
+func TestFactorial(t *testing.T) {
+	cases := []struct {
+		in  int
+		out *big.Int
+	}{
+		{0, big.NewInt(1)},
+		{1, big.NewInt(1)},
+		{2, big.NewInt(2)},
+		{10, big.NewInt(3628800)},
+		{15, big.NewInt(1307674368000)},
+		{20, big.NewInt(2432902008176640000)},
+	}
+	for _, c := range cases {
+		if v := Factorial(c.in); v.Cmp(c.out) != 0 {
+			t.Errorf("Factorial: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

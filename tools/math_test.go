@@ -546,6 +546,23 @@ func TestFactorial(t *testing.T) {
 	}
 }
 
+func TestIsPalindromeInt(t *testing.T) {
+	cases := []struct {
+		in  int
+		out bool
+	}{
+		{0, true},
+		{12321, true},
+		{1231, false},
+		{112353211, true},
+	}
+	for _, c := range cases {
+		if v := IsPalindromeInt(c.in); v != c.out {
+			t.Errorf("IsPalindromeInt: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

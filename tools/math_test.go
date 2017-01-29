@@ -563,6 +563,24 @@ func TestIsPalindromeInt(t *testing.T) {
 	}
 }
 
+func TestIsPalindromeIntBig(t *testing.T) {
+	cases := []struct {
+		in  *big.Int
+		out bool
+	}{
+		{big.NewInt(0), true},
+		{big.NewInt(12321), true},
+		{big.NewInt(1231), false},
+		{big.NewInt(112353211), true},
+		{big.NewInt(314159265562951413), true},
+	}
+	for _, c := range cases {
+		if v := IsPalindromeIntBig(c.in); v != c.out {
+			t.Errorf("IsPalindromeIntBig: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

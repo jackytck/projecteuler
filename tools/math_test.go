@@ -581,6 +581,28 @@ func TestIsPalindromeIntBig(t *testing.T) {
 	}
 }
 
+func TestIsPandigital(t *testing.T) {
+	cases := []struct {
+		in  int
+		out bool
+	}{
+		{0, false},
+		{1, true},
+		{312, true},
+		{3142, true},
+		{53142, true},
+		{536142, true},
+		{5376147, false},
+		{537861947, false},
+		{537861942, true},
+	}
+	for _, c := range cases {
+		if v := IsPandigital(c.in); v != c.out {
+			t.Errorf("IsPandigital: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

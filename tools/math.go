@@ -353,7 +353,7 @@ func IsPermuted(a, b int) bool {
 	db := Digits(b)
 	sort.Ints(da)
 	sort.Ints(db)
-	return JoinInts(da) == JoinInts(db)
+	return len(da) == len(db) && JoinInts(da) == JoinInts(db)
 }
 
 // TriangleNumber returns the n-th triangle number.

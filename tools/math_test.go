@@ -603,6 +603,26 @@ func TestIsPandigital(t *testing.T) {
 	}
 }
 
+func TestIsPermuted(t *testing.T) {
+	cases := []struct {
+		in1 int
+		in2 int
+		out bool
+	}{
+		{0, 0, true},
+		{123, 213, true},
+		{1243, 213, false},
+		{11235, 53121, true},
+		{112035, 53121, false},
+		{112035, 503121, true},
+	}
+	for _, c := range cases {
+		if v := IsPermuted(c.in1, c.in2); v != c.out {
+			t.Errorf("IsPermuted: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

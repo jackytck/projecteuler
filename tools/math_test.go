@@ -623,6 +623,31 @@ func TestIsPermuted(t *testing.T) {
 	}
 }
 
+func TestTriangleNumber(t *testing.T) {
+	cases := []struct {
+		in  int
+		out int
+	}{
+		{0, 0},
+		{1, 1},
+		{2, 3},
+		{3, 6},
+		{4, 10},
+		{5, 15},
+		{6, 21},
+		{7, 28},
+		{8, 36},
+		{9, 45},
+		{10, 55},
+		{28, 406},
+	}
+	for _, c := range cases {
+		if v := TriangleNumber(c.in); v != c.out {
+			t.Errorf("TriangleNumber: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

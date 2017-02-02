@@ -648,6 +648,25 @@ func TestTriangleNumber(t *testing.T) {
 	}
 }
 
+func TestIsTriangleNumber(t *testing.T) {
+	cases := []struct {
+		in  int
+		out bool
+	}{
+		{0, true},
+		{1, true},
+		{3, true},
+		{46, false},
+		{56, false},
+		{407, false},
+	}
+	for _, c := range cases {
+		if v := IsTriangleNumber(c.in); v != c.out {
+			t.Errorf("IsTriangleNumber: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

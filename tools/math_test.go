@@ -667,6 +667,30 @@ func TestIsTriangleNumber(t *testing.T) {
 	}
 }
 
+func TestSquareNumber(t *testing.T) {
+	cases := []struct {
+		in  int
+		out int
+	}{
+		{0, 0},
+		{1, 1},
+		{2, 4},
+		{3, 9},
+		{4, 16},
+		{5, 25},
+		{6, 36},
+		{7, 49},
+		{8, 64},
+		{9, 81},
+		{10, 100},
+	}
+	for _, c := range cases {
+		if v := SquareNumber(c.in); v != c.out {
+			t.Errorf("SquareNumber: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

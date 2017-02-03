@@ -691,6 +691,26 @@ func TestSquareNumber(t *testing.T) {
 	}
 }
 
+func TestIsSquareNumber(t *testing.T) {
+	cases := []struct {
+		in  int
+		out bool
+	}{
+		{0, true},
+		{1, true},
+		{4, true},
+		{10, false},
+		{17, false},
+		{1468944, true},
+		{1874160, false},
+	}
+	for _, c := range cases {
+		if v := IsSquareNumber(c.in); v != c.out {
+			t.Errorf("IsSquareNumber: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

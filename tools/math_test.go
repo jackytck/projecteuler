@@ -711,6 +711,30 @@ func TestIsSquareNumber(t *testing.T) {
 	}
 }
 
+func TestPentagonNumber(t *testing.T) {
+	cases := []struct {
+		in  int
+		out int
+	}{
+		{0, 0},
+		{1, 1},
+		{2, 5},
+		{3, 12},
+		{4, 22},
+		{5, 35},
+		{6, 51},
+		{7, 70},
+		{8, 92},
+		{9, 117},
+		{10, 145},
+	}
+	for _, c := range cases {
+		if v := PentagonNumber(c.in); v != c.out {
+			t.Errorf("PentagonNumber: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

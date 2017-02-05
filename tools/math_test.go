@@ -735,6 +735,27 @@ func TestPentagonNumber(t *testing.T) {
 	}
 }
 
+func TestIsPentagonNumber(t *testing.T) {
+	cases := []struct {
+		in  int
+		out bool
+	}{
+		{0, false},
+		{1, true},
+		{5, true},
+		{52, false},
+		{71, false},
+		{3290, true},
+		{4187, true},
+		{4032, false},
+	}
+	for _, c := range cases {
+		if v := IsPentagonNumber(c.in); v != c.out {
+			t.Errorf("IsPentagonNumber: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

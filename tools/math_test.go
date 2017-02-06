@@ -756,6 +756,30 @@ func TestIsPentagonNumber(t *testing.T) {
 	}
 }
 
+func TestHexagonNumber(t *testing.T) {
+	cases := []struct {
+		in  int
+		out int
+	}{
+		{0, 0},
+		{1, 1},
+		{2, 6},
+		{3, 15},
+		{4, 28},
+		{5, 45},
+		{6, 66},
+		{7, 91},
+		{8, 120},
+		{9, 153},
+		{10, 190},
+	}
+	for _, c := range cases {
+		if v := HexagonNumber(c.in); v != c.out {
+			t.Errorf("HexagonNumber: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

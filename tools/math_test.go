@@ -826,6 +826,27 @@ func TestHeptagonalNumber(t *testing.T) {
 	}
 }
 
+func TestIsHeptagonalNumber(t *testing.T) {
+	cases := []struct {
+		in  int
+		out bool
+	}{
+		{0, false},
+		{1, true},
+		{55, true},
+		{111, false},
+		{149, false},
+		{235, true},
+		{1782, true},
+		{1783, false},
+	}
+	for _, c := range cases {
+		if v := IsHeptagonalNumber(c.in); v != c.out {
+			t.Errorf("IsHeptagonalNumber: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

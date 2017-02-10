@@ -847,6 +847,31 @@ func TestIsHeptagonalNumber(t *testing.T) {
 	}
 }
 
+func TestOctagonalNumber(t *testing.T) {
+	cases := []struct {
+		in  int
+		out int
+	}{
+		{0, 0},
+		{1, 1},
+		{2, 8},
+		{3, 21},
+		{4, 40},
+		{5, 65},
+		{6, 96},
+		{7, 133},
+		{8, 176},
+		{9, 225},
+		{10, 280},
+		{18, 936},
+	}
+	for _, c := range cases {
+		if v := OctagonalNumber(c.in); v != c.out {
+			t.Errorf("OctagonalNumber: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

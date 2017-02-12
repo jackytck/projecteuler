@@ -893,6 +893,25 @@ func TestIsOctagonalNumber(t *testing.T) {
 	}
 }
 
+func TestIsPermute(t *testing.T) {
+	cases := []struct {
+		in  []int
+		out bool
+	}{
+		{[]int{1, 1, 1}, true},
+		{[]int{1, 1, 10}, false},
+		{[]int{123, 321, 213}, true},
+		{[]int{123, 3201, 213}, false},
+		{[]int{23418715, 41572138, 57413281}, true},
+		{[]int{2348715, 41572138, 57413281}, false},
+	}
+	for _, c := range cases {
+		if v := IsPermute(c.in...); v != c.out {
+			t.Errorf("IsPermute: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

@@ -430,15 +430,16 @@ func IsOctagonalNumber(n int) bool {
 // IsPermute determines if all the given ints are permutation of each other.
 func IsPermute(args ...int) bool {
 	permute := true
-	var compare int
+	var cmpVal, cmpSize int
 	for i, v := range args {
 		d := Digits(v)
 		sort.Ints(d)
 		j := JoinInts(d)
 		if i == 0 {
-			compare = j
+			cmpVal = j
+			cmpSize = len(d)
 		} else {
-			if j != compare {
+			if j != cmpVal || len(d) != cmpSize {
 				permute = false
 				break
 			}

@@ -912,6 +912,24 @@ func TestIsPermute(t *testing.T) {
 	}
 }
 
+func TestNCR(t *testing.T) {
+	cases := []struct {
+		in1 int
+		in2 int
+		out int64
+	}{
+		{12, 5, 792},
+		{37, 13, 3562467300},
+		{49, 25, 63205303218876},
+		{52, 16, 10363194502115},
+	}
+	for _, c := range cases {
+		if v := NCR(c.in1, c.in2); v.Cmp(big.NewInt(c.out)) != 0 {
+			t.Errorf("NCR: %v\tExpected: %v", v, c.out)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

@@ -930,6 +930,41 @@ func TestNCR(t *testing.T) {
 	}
 }
 
+func TestCombIndex(t *testing.T) {
+	cases := []struct {
+		in1 int
+		in2 int
+		out [][]int
+	}{
+		{5, 2, [][]int{{0, 1}, {0, 2}, {0, 3}, {0, 4}, {1, 2}, {1, 3}, {1, 4}, {2, 3},
+			{2, 4}, {3, 4}}},
+		{7, 3, [][]int{{0, 1, 2}, {0, 1, 3}, {0, 1, 4}, {0, 1, 5}, {0, 1, 6},
+			{0, 2, 3}, {0, 2, 4}, {0, 2, 5}, {0, 2, 6}, {0, 3, 4}, {0, 3, 5}, {0, 3, 6},
+			{0, 4, 5}, {0, 4, 6}, {0, 5, 6}, {1, 2, 3}, {1, 2, 4}, {1, 2, 5}, {1, 2, 6},
+			{1, 3, 4}, {1, 3, 5}, {1, 3, 6}, {1, 4, 5}, {1, 4, 6}, {1, 5, 6}, {2, 3, 4},
+			{2, 3, 5}, {2, 3, 6}, {2, 4, 5}, {2, 4, 6}, {2, 5, 6}, {3, 4, 5}, {3, 4, 6},
+			{3, 5, 6}, {4, 5, 6}}},
+	}
+	for _, c := range cases {
+		k := 0
+		for indices := range CombIndex(c.in1, c.in2) {
+			expect := c.out[k]
+			if len(indices) != len(expect) {
+				t.Errorf("CombIndex: len(%v)\tExpected: len(%v)", len(indices), len(expect))
+			}
+			for i, v := range indices {
+				if v != expect[i] {
+					t.Errorf("CombIndex: %v\tExpected: %v", v, expect[i])
+				}
+			}
+			k++
+		}
+		if k != len(c.out) {
+			t.Errorf("CombIndex: len(%v)\tExpected: len(%v)", k, len(c.out))
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

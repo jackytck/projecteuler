@@ -965,6 +965,35 @@ func TestCombIndex(t *testing.T) {
 	}
 }
 
+func TestComb(t *testing.T) {
+	cases := []struct {
+		in1 string
+		in2 int
+		out []string
+	}{
+		{"abc", 2, []string{"ab", "ac", "bc"}},
+		{"jacky", 3, []string{"jac", "jak", "jay", "jck", "jcy", "jky", "ack", "acy",
+			"aky", "cky"}},
+	}
+	for _, c := range cases {
+		k := 0
+		for slice := range Comb(c.in1, c.in2) {
+			expect := c.out[k]
+			for i, v := range slice {
+				s := string(v.(uint8))
+				e := string(expect[i])
+				if s != e {
+					t.Errorf("Comb: %v\tExpected: %v", s, e)
+				}
+			}
+			k++
+		}
+		if k != len(c.out) {
+			t.Errorf("Comb: len(%v)\tExpected: len(%v)", k, len(c.out))
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

@@ -994,6 +994,33 @@ func TestComb(t *testing.T) {
 	}
 }
 
+func TestSqrtExpand(t *testing.T) {
+	cases := []struct {
+		in  int
+		out []int
+	}{
+		{2, []int{1, 2}},
+		{3, []int{1, 1, 2}},
+		{17, []int{4, 8}},
+		{64, []int{8}},
+		{144, []int{12}},
+		{234, []int{15, 3, 2, 1, 2, 1, 2, 3, 30}},
+		{3889, []int{62, 2, 1, 3, 4, 2, 1, 7, 1, 1, 1, 1, 1, 17, 5, 7, 7, 5, 17, 1,
+			1, 1, 1, 1, 7, 1, 2, 4, 3, 1, 2, 124}},
+	}
+	for _, c := range cases {
+		ex := SqrtExapnd(c.in)
+		if len(ex) != len(c.out) {
+			t.Errorf("SqrtExpand: len(%v)\tExpected: len(%v)", len(ex), len(c.out))
+		}
+		for i, v := range ex {
+			if v != c.out[i] {
+				t.Errorf("SqrtExpand: %v\tExpected: %v", v, c.out[i])
+			}
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

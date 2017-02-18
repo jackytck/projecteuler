@@ -1021,6 +1021,27 @@ func TestSqrtExpand(t *testing.T) {
 	}
 }
 
+func TestConvergentSqrt(t *testing.T) {
+	cases := []struct {
+		in1, in2   int
+		out1, out2 *big.Int
+	}{
+		{-2, 3, big.NewInt(0), big.NewInt(0)},
+		{123, -1, big.NewInt(0), big.NewInt(0)},
+		{123, 0, big.NewInt(11), big.NewInt(1)},
+		{123, 7, big.NewInt(1772148577), big.NewInt(159789256)},
+		{144, 3, big.NewInt(0), big.NewInt(0)},
+		{3889, 12, big.NewInt(630603), big.NewInt(10112)},
+		{1123581321, 23, big.NewInt(24321622557433), big.NewInt(725588330)},
+	}
+	for _, c := range cases {
+		if x, y := ConvergentSqrt(c.in1, c.in2); x.Cmp(c.out1) != 0 || y.Cmp(c.out2) != 0 {
+			t.Errorf("ConvergentSqrt: (%v, %v) -> (%v, %v)\tExpected: (%v, %v)", c.in1,
+				c.in2, x, y, c.out1, c.out2)
+		}
+	}
+}
+
 func TestGCD(t *testing.T) {
 	cases := []struct {
 		in1, in2 int

@@ -536,7 +536,7 @@ func SqrtExapnd(n int) []int {
 // ConvergentSqrt gives the i-th convergent of the continued fraction of the
 // squart root of n.
 func ConvergentSqrt(n, i int) (*big.Int, *big.Int) {
-	if i < 0 || IsSquareNumber(n) {
+	if n < 0 || i < 0 || IsSquareNumber(n) {
 		return big.NewInt(0), big.NewInt(0)
 	}
 	a := SqrtExapnd(n)

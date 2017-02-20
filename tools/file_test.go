@@ -18,7 +18,7 @@ func TestReadWords(t *testing.T) {
 	tmp := "tmp-input.txt"
 	for _, c := range cases {
 		ioutil.WriteFile(tmp, []byte(c.in), 0644)
-		d := ReadWords(tmp)
+		d, _ := ReadWords(tmp)
 		sort.Strings(d)
 		sort.Strings(c.out)
 		match := true
@@ -33,4 +33,8 @@ func TestReadWords(t *testing.T) {
 		}
 	}
 	os.Remove(tmp)
+	_, err := ReadWords("not_existed.txt")
+	if err == nil {
+		t.Error("ReadWords should return error if file does not exist.")
+	}
 }

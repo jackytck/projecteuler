@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math"
 	"sort"
 	"strings"
@@ -111,7 +112,10 @@ func isAnagramicSquare(p Pair, sq int) (bool, int) {
 
 func solve(input string) int {
 	var maxSq int
-	words := tools.ReadWords(input)
+	words, err := tools.ReadWords(input)
+	if err != nil {
+		log.Fatal(err)
+	}
 	pairs, min, max := posiblePairs(words)
 	squares := genSquares(min, max)
 	for _, p := range pairs {

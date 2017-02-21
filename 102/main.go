@@ -2,13 +2,18 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/jackytck/projecteuler/tools"
 )
 
 func solve(input string) int {
 	var cnt int
-	for _, line := range tools.ReadFile(input) {
+	lines, err := tools.ReadFile(input)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, line := range lines {
 		t := Triangle{}
 		t.init(line)
 		if t.isInside(0, 0) {

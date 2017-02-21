@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"reflect"
 	"sort"
 	"strings"
@@ -227,7 +228,10 @@ func test() {
 
 func solve(input string) int {
 	var win int
-	inputs := tools.ReadFile(input)
+	inputs, err := tools.ReadFile(input)
+	if err != nil {
+		log.Fatal(err)
+	}
 	for _, h := range inputs {
 		if compareHands(parseHands(h)) {
 			win++

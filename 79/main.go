@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/jackytck/projecteuler/tools"
 )
@@ -31,12 +32,15 @@ func check(p string, log []string) bool {
 
 func solve(path string) string {
 	// read
-	log := tools.ReadFile(path)
+	logs, err := tools.ReadFile(path)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// make unique set
 	exist := make(map[string]bool)
 	var unique []string
-	for _, v := range log {
+	for _, v := range logs {
 		if !exist[v] {
 			unique = append(unique, v)
 			exist[v] = true

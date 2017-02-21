@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/jackytck/projecteuler/tools"
@@ -9,7 +10,10 @@ import (
 
 func solve(input string) int {
 	var cnt int
-	inputs := tools.ReadFile(input)
+	inputs, err := tools.ReadFile(input)
+	if err != nil {
+		log.Fatal(err)
+	}
 	for i, v := range inputs {
 		if strings.HasPrefix(v, "Grid") {
 			board := inputs[i+1 : i+10]

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"sort"
 	"strconv"
 	"strings"
@@ -12,7 +13,11 @@ import (
 
 func load(input string) [][]int {
 	var all [][]int
-	for _, s := range tools.ReadFile(input) {
+	lines, err := tools.ReadFile(input)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, s := range lines {
 		var set []int
 		for _, x := range strings.Split(s, ",") {
 			y, _ := strconv.Atoi(x)

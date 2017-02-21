@@ -8,16 +8,16 @@ import (
 )
 
 // ReadFile reads content of a file in a given path and returns it.
-func ReadFile(path string) []string {
+func ReadFile(path string) ([]string, error) {
 	lines, err := ioutil.ReadFile(path)
 	if err != nil {
-		log.Fatal(err)
+		return []string{}, err
 	}
 	ss := strings.Split(string(lines), "\n")
 	if ss[len(ss)-1] == "" {
 		ss = ss[:len(ss)-1]
 	}
-	return ss
+	return ss, nil
 }
 
 // ReadWords reads content of a file that contains a line of words:

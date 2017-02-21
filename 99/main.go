@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math"
 	"strconv"
 	"strings"
@@ -12,7 +13,11 @@ import (
 func solve(input string) int {
 	var maxI int
 	var maxV float64
-	for i, v := range tools.ReadFile(input) {
+	lines, err := tools.ReadFile(input)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for i, v := range lines {
 		p := strings.Split(v, ",")
 		a, _ := strconv.Atoi(p[0])
 		b, _ := strconv.Atoi(p[1])

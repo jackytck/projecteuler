@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 
@@ -24,7 +25,11 @@ type Edge struct {
 func loadGraph(input string) ([]Node, int) {
 	var total int
 	var nodes []Node
-	for i, line := range tools.ReadFile(input) {
+	lines, err := tools.ReadFile(input)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for i, line := range lines {
 		var edges []Edge
 		for j, v := range strings.Split(line, ",") {
 			if v == "-" {

@@ -2,12 +2,16 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/jackytck/projecteuler/tools"
 )
 
 func solve(path string) int {
-	m := tools.ReadMatrix(path)
+	m, err := tools.ReadMatrix(path)
+	if err != nil {
+		log.Fatal(err)
+	}
 	for i, row := range m {
 		for j := range row {
 			if i == 0 && j == 0 {

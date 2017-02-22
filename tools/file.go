@@ -2,7 +2,6 @@ package tools
 
 import (
 	"io/ioutil"
-	"log"
 	"strconv"
 	"strings"
 )
@@ -32,11 +31,11 @@ func ReadWords(path string) ([]string, error) {
 }
 
 // ReadMatrix reads an integer matrix stored in a file of a given path.
-func ReadMatrix(path string) [][]int {
+func ReadMatrix(path string) ([][]int, error) {
 	var m [][]int
 	lines, err := ioutil.ReadFile(path)
 	if err != nil {
-		log.Fatal(err)
+		return m, err
 	}
 	ss := strings.Split(string(lines), "\n")
 	for i, row := range ss {
@@ -52,5 +51,5 @@ func ReadMatrix(path string) [][]int {
 			m[i] = append(m[i], d)
 		}
 	}
-	return m
+	return m, nil
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/jackytck/projecteuler/tools"
 	lane "gopkg.in/oleiade/lane.v1"
@@ -46,7 +47,10 @@ func (n *node) hash() int {
 }
 
 func solve(path string) int {
-	m := tools.ReadMatrix(path)
+	m, err := tools.ReadMatrix(path)
+	if err != nil {
+		log.Fatal(err)
+	}
 	h = len(m)
 	w = len(m[0])
 	root := node{0, 0, m[0][0]}
